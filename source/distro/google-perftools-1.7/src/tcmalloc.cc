@@ -1669,5 +1669,5 @@ static void *MemalignOverride(size_t align, size_t size, const void *caller)
   MallocHook::InvokeNewHook(result, size);
   return result;
 }
-void *(*__memalign_hook)(size_t, size_t, const void *) = MemalignOverride;
+void *(* volatile __memalign_hook)(size_t, size_t, const void *) = MemalignOverride;
 #endif  // #ifndef TCMALLOC_FOR_DEBUGALLOCATION
